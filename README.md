@@ -1,5 +1,5 @@
 <h1> Github Api </h1> 
-Aplicação desenvolvida com React JS consumindo a API do github para adicionar repositórios e listar os issues.
+Aplicação desenvolvida com React JS consumindo a API do github para adicionar repositórios e listar os issues, utilizando styled components para estilização. 
 
 <h1> Principais tecnologias utilizadas: </h1>
 <ul> 
