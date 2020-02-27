@@ -32,6 +32,8 @@ module.exports = {
       {extensions: ['.jsx', '.js']}
     ],
     'import/prefer-default-export': 'off',
-    'eslint-disable-next-line': 'off'
+    'eslint-disable-next-line': 'off',
+    'eslint-disable-next-line react/state-in-constructor': 'off',
+    'eslint-disable-next-line react/no-unused-state': 'off',
   },
 };
