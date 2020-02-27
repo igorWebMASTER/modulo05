@@ -1,0 +1,14 @@
+<h1> Github Api </h1> 
+SPA(Single Page Application) desenvolvida com React JS consumindo a API do github para adicionar repositórios e listar os issues.
+
+<h1> Principais tecnologias utilizadas: </h1>
+<ul> 
+  <li> React Js </li> 
+  <li> Styled Components</li> 
+  <li> React Dom</li> 
+</ul>
+<h1> Principais funções: </h1> 
+Adicionar Repositórios do Github
+Listar Repositórios 
+Listar Issues 
+
