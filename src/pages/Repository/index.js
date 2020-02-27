@@ -8,6 +8,7 @@ import Container from '../../components/Container';
 import { Loading, Owner, IssueList } from './styles';
 
 export default class Repository extends Component {
+  // eslint-disable-next-line react/static-property-placement
   static propTypes = {
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -17,13 +18,15 @@ export default class Repository extends Component {
   };
 
   //
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     repository: {},
     issues: [],
     loading: true,
+    // eslint-disable-next-line react/no-unused-state
     filter: [
       { state: 'all', label: 'Todas', active: true },
-      { state: 'open', label: 'Todas', active: false },
+      { state: 'open', label: 'Abertas', active: false },
       { state: 'closed', label: 'Fechadas', active: false },
     ],
     filterIndex: 0,
