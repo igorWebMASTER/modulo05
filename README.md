@@ -8,7 +8,8 @@ Aplicação desenvolvida com React JS consumindo a API do github para adicionar 
   <li> React Dom</li> 
 </ul>
 <h1> Principais funções: </h1> 
-Adicionar Repositórios do Github
-Listar Repositórios 
-Listar Issues 
-
+<ul>
+ <li>Adicionar Repositórios do Github</li> 
+ <li>Listar Repositórios </li> 
+ <li>Listar Issues </li> 
+</ul>
