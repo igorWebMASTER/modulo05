@@ -3,13 +3,15 @@ import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
-import { Container, Form, SubmitButton, List } from './styles';
+import Container from '../../components/Container';
+import { Form, SubmitButton, List } from './styles';
 
 export default class Main extends Component {
   state = {
     newRepo: '',
     repositories: [],
     loading: false,
+    error:null,
   };
 
   // /carregar os dados do localstorage
@@ -36,24 +38,39 @@ export default class Main extends Component {
   handlSubmit = async e => {
     e.preventDefault();
 
-    this.setState({ loading: true });
-    const { newRepo, repositories } = this.state;
+    this.setState({ loading: true, error: false });
 
-    const response = await api.get(`/repos/${newRepo}`);
+    try {
+      
+      const { newRepo, repositories } = this.state;
 
-    const data = {
+      if(newRepo === '' ) throw ('Você precisa indicar um repositório');
+
+      const hasRepo = repositories.find(r => r.name === newRepo);
+
+      if(hasRepo) throw 'Repositório duplicado';
+
+      const response = await api.get(`/repos/${newRepo}`);
+ 
+      const data = {
       name: response.data.full_name,
     };
 
     this.setState({
       repositories: [...repositories, data],
       newRepo: '',
-      loading: false,
     });
+
+    } catch (error) {
+       this.setState({ error: true});
+    }finally{
+       this.setState({ loading: false });
+    }
+    
   };
 
   render() {
-    const { newRepo, loading, repositories } = this.state;
+    const { newRepo, repositories, loading, error } = this.state;
     return (
       <Container>
         <h1>
@@ -61,7 +78,7 @@ export default class Main extends Component {
           Repositórios
         </h1>
 
-        <Form onSubmit={this.handlSubmit}>
+        <Form onSubmit={this.handlSubmit} erro={error}>
           <input
             type="text"
             placeholder="Adicionar repositório"
@@ -73,7 +90,7 @@ export default class Main extends Component {
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
             ) : (
-              <FaPlus color="#fff" size={14} />
+              <FaPlus color="#FFF" size={14} />
             )}
           </SubmitButton>
         </Form>
